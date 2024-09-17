@@ -1,0 +1,34 @@
+.container {
+  background-color: var(--clr-blue);
+  min-height: 100dvh;
+
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.heroImg {
+  width: 80%;
+  max-width: 500px;
+}
+
+.content {
+  width: 80%;
+  padding: 3rem 4rem;
+  border-radius: 1.5rem;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+  & h2 {
+    margin-bottom: 2rem;
+  }
+}
+
+.subText {
+  font-size: 1.7rem;
+  line-height: 1.2;
+  color: #8f8f8f;
+  font-weight: 300;
+  margin-bottom: 5rem;
+}

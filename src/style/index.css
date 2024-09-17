@@ -1,0 +1,39 @@
+:root {
+  --clr-blue: #4c36ed;
+}
+
+select:disabled,
+input:disabled,
+button:disabled,
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type='month'] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+h2 {
+  font-size: 3.6rem;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.16px;
+}

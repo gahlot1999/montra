@@ -38,3 +38,9 @@ h2 {
   font-weight: 700;
   letter-spacing: -0.16px;
 }
+
+@media (width < 500px) {
+  h2 {
+    font-size: 3.6rem;
+  }
+}

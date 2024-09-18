@@ -1,6 +1,27 @@
 :root {
-  --clr-blue: #4c36ed;
-  --clr-off-white: #faf9f6;
+  --clr-light-1: #f9f9f9;
+  --clr-light-2: #f5f5f5;
+  --clr-light-3: #f3f3f3;
+  --clr-light-4: #eeeeee;
+  --clr-light-5: #eaeaea;
+
+  --clr-dark-1: #212121;
+  --clr-dark-2: #101010;
+  --clr-dark-3: #080808;
+  --clr-dark-4: #050505;
+  --clr-dark-5: #030303;
+
+  --clr-light-1-hsl: 0, 0%, 98%;
+  --clr-light-2-hsl: 0, 0%, 96%;
+  --clr-light-3-hsl: 0, 0%, 95%;
+  --clr-light-4-hsl: 0, 0%, 93%;
+  --clr-light-5-hsl: 0, 0%, 92%;
+
+  --clr-dark-1-hsl: 0, 0%, 13%;
+  --clr-dark-2-hsl: 0, 0%, 6%;
+  --clr-dark-3-hsl: 0, 0%, 3%;
+  --clr-dark-4-hsl: 0, 0%, 2%;
+  --clr-dark-5-hsl: 0, 0%, 1%;
 }
 
 select:disabled,
@@ -39,8 +60,8 @@ h2 {
   letter-spacing: -0.16px;
 }
 
-@media (width < 500px) {
-  h2 {
-    font-size: 3.6rem;
-  }
+h3 {
+  font-size: 2.4rem;
+  line-height: 1.2;
+  font-weight: 700;
 }

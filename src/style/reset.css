@@ -16,6 +16,12 @@ html {
   font-size: 62.5%;
 }
 
+@media (width < 500px) {
+  html {
+    font-size: 50%;
+  }
+}
+
 body {
   line-height: 1.5;
   min-height: 100vh;

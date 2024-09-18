@@ -1,0 +1,11 @@
+.btnGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+@media (width < 500px) {
+  .btnGroup {
+    justify-content: center !important;
+  }
+}

@@ -1,34 +1,50 @@
 .container {
-  background-color: var(--clr-blue);
   min-height: 100dvh;
-
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  align-items: center;
-  justify-items: center;
-}
-
-.heroImg {
-  width: 80%;
-  max-width: 500px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('../../assets/hero.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .content {
-  width: 80%;
+  width: 45%;
   padding: 3rem 4rem;
-  border-radius: 1.5rem;
-  background-color: #fff;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  background-color: transparent;
+  backdrop-filter: blur(8px);
+  transition: backdrop-filter 0.3s ease-in-out;
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -55%);
+
+  &:hover {
+    backdrop-filter: blur(20px);
+  }
 
   & h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 1.6rem;
+    color: var(--clr-off-white);
+
+    & span {
+      font-style: italic;
+    }
+  }
+}
+
+@media (width < 500px) {
+  .content {
+    text-align: center;
+    width: 85%;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
 .subText {
   font-size: 1.7rem;
   line-height: 1.2;
-  color: #8f8f8f;
-  font-weight: 300;
-  margin-bottom: 5rem;
+  color: var(--clr-off-white);
+  font-weight: 100;
+  margin-bottom: 10rem;
 }

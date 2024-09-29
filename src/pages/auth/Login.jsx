@@ -1,14 +1,13 @@
+import LoginForm from '../../features/forms/auth/LoginForm';
 import styles from './LoginSignup.module.css';
-import AuthFormHeader from '../../components/authFormHeader/AuthFormHeader';
+import Logo from './Logo';
 
 function Login() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <AuthFormHeader
-          title='Welcome back'
-          description='Please enter your details to sign in'
-        />
+        <Logo />
+        <LoginForm />
       </div>
     </div>
   );

@@ -1,27 +1,29 @@
 :root {
-  --clr-light-1: #f9f9f9;
-  --clr-light-2: #f5f5f5;
-  --clr-light-3: #f3f3f3;
-  --clr-light-4: #eeeeee;
-  --clr-light-5: #eaeaea;
+  --clr-primary: hsl(155, 47%, 40%);
+  --clr-primary-dark: hsl(155, 48%, 26%);
+  --clr-secondary: hsl(202, 46%, 20%);
+  --clr-light: hsl(0, 0%, 92%);
+  --clr-dark: hsl(0, 0%, 1%);
+  --clr-dark-2: hsl(0, 0%, 7%);
+  --clr-danger: hsl(4, 74%, 49%);
 
-  --clr-dark-1: #212121;
-  --clr-dark-2: #101010;
-  --clr-dark-3: #080808;
-  --clr-dark-4: #050505;
-  --clr-dark-5: #030303;
+  --clr-primary-hsl: 155, 47%, 40%;
+  --clr-primary-dark-hsl: 155, 48%, 26%;
+  --clr-secondary-hsl: 202, 46%, 20%;
+  --clr-light-hsl: 0, 0%, 92%;
+  --clr-dark-hsl: 0, 0%, 1%;
+  --clr-dark-2-hsl: 0, 0%, 7%;
+  --clr-danger-hsl: 4, 74%, 49%;
+}
 
-  --clr-light-1-hsl: 0, 0%, 98%;
-  --clr-light-2-hsl: 0, 0%, 96%;
-  --clr-light-3-hsl: 0, 0%, 95%;
-  --clr-light-4-hsl: 0, 0%, 93%;
-  --clr-light-5-hsl: 0, 0%, 92%;
+svg {
+  cursor: pointer;
+}
 
-  --clr-dark-1-hsl: 0, 0%, 13%;
-  --clr-dark-2-hsl: 0, 0%, 6%;
-  --clr-dark-3-hsl: 0, 0%, 3%;
-  --clr-dark-4-hsl: 0, 0%, 2%;
-  --clr-dark-5-hsl: 0, 0%, 1%;
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 select:disabled,
@@ -51,6 +53,7 @@ input[type='number'] {
 input[type='month'] {
   -webkit-appearance: none;
   appearance: none;
+  color-scheme: dark;
 }
 
 h2 {
@@ -61,7 +64,23 @@ h2 {
 }
 
 h3 {
+  color: var(--clr-dark);
   font-size: 2.4rem;
   line-height: 1.2;
   font-weight: 700;
+}
+
+h4 {
+  color: var(--clr-light);
+  font-size: 1.8rem;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--clr-primary);
+    text-decoration: underline;
+    font-weight: 700;
+  }
 }

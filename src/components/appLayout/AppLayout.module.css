@@ -1,0 +1,14 @@
+.container {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app {
+  flex-grow: 1;
+  overflow-y: auto;
+  background-color: var(--clr-dark);
+  color: var(--clr-light);
+  /* max-width: 1600px; */
+  padding: 2rem 2rem;
+}

@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  text-align: center;
+  width: 70%;
+
+  & > p {
+    font-size: 1.2rem;
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    color: hsla(var(--clr-dark-hsl), 0.6);
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  & > p {
+    font-size: 1.1rem;
+    margin-block: 0.3rem;
+    color: hsla(var(--clr-dark-hsl), 0.6);
+
+    & a {
+      cursor: pointer;
+      font-style: italic;
+      color: var(--clr-primary);
+      font-weight: 600;
+    }
+  }
+}

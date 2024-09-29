@@ -1,0 +1,38 @@
+.header {
+  background-color: var(--clr-dark);
+  color: var(--clr-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 3rem;
+  border-bottom: 0.1px solid hsla(var(--clr-light-hsl), 0.15);
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
+
+.nav ul {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+
+  & li {
+    & a {
+      letter-spacing: 0.16px;
+      color: var(--clr-light);
+      transition: color 0.3s ease;
+
+      &:global(.active) {
+        color: var(--clr-primary);
+        font-weight: 700;
+      }
+
+      &:hover {
+        color: var(--clr-primary);
+      }
+    }
+  }
+}

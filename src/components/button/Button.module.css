@@ -6,8 +6,8 @@
 }
 
 .auth {
-  color: #ffffff;
-  border: 2px solid #ccc;
+  color: var(--clr-light);
+  border: 2px solid var(--clr-light);
   padding: 0.8rem 4rem;
   font-size: 1.5rem;
   font-weight: 600;
@@ -15,7 +15,29 @@
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #ccc;
-    color: #000;
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+  }
+}
+
+.primary {
+  background-color: var(--clr-primary);
+  color: #fff;
+  font-weight: 500;
+  padding: 0.5rem;
+}
+
+.secondary {
+  background-color: var(--clr-dark-2);
+  border: 0.1px solid hsl(var(--clr-light-hsl), 0.05);
+  color: var(--clr-light);
+  font-weight: 500;
+  border-radius: 0.3rem;
+  padding: 0.5rem 1.4rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: var(--clr-primary);
+    color: var(--clr-dark-2);
   }
 }

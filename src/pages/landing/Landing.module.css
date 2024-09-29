@@ -25,7 +25,7 @@
 
   & h2 {
     margin-bottom: 1.6rem;
-    color: var(--clr-light-1);
+    color: var(--clr-light);
 
     & span {
       font-style: italic;
@@ -36,7 +36,7 @@
 .subText {
   font-size: 1.7rem;
   line-height: 1.2;
-  color: var(--clr-light-1);
+  color: var(--clr-light);
   font-weight: 100;
   margin-bottom: 10rem;
 }

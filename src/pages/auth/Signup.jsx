@@ -1,14 +1,13 @@
+import SignupForm from '../../features/forms/auth/SignupForm';
 import styles from './LoginSignup.module.css';
-import AuthFormHeader from '../../components/authFormHeader/AuthFormHeader';
+import Logo from './Logo';
 
 function Signup() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <AuthFormHeader
-          title='Create new account'
-          description='Sign up with your email address to access your Montra account'
-        />
+        <Logo />
+        <SignupForm />
       </div>
     </div>
   );

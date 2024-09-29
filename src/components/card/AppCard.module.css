@@ -1,0 +1,54 @@
+.card {
+  cursor: pointer;
+  padding: 2rem 3rem;
+  border-radius: 1.6rem;
+  display: flex;
+  gap: 2rem;
+  box-shadow: rgb(16, 16, 16) 3px 3px 6px 0px inset,
+    rgba(22, 22, 22, 0.5) -3px -3px 6px 1px inset;
+
+  &:hover {
+    background-color: var(--clr-dark-2);
+  }
+}
+
+.icon {
+  align-self: center;
+  & svg {
+    min-width: 10rem;
+    height: 10rem;
+    fill: var(--clr-primary);
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+
+  & h5 {
+    color: var(--clr-light);
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-block: 0.5rem;
+    letter-spacing: 1px;
+    line-height: 1.1;
+  }
+
+  & p {
+    color: hsl(var(--clr-light-hsl), 0.4);
+    font-size: 1.4rem;
+    margin-block: 1rem;
+    line-height: 1.3;
+  }
+
+  & a {
+    margin-top: auto;
+    margin-left: auto;
+    border-radius: 999rem;
+    border: 1px solid hsl(var(--clr-light-hsl), 0.1);
+    padding: 0.5rem 1.2rem;
+    color: var(--clr-primary);
+    font-size: 1.3rem;
+    transition: color 0.3s ease;
+  }
+}

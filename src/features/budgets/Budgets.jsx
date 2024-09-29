@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { useGetBudgets } from '../../api/useBudget';
+import { useAddBudget, useGetBudgets } from '../../api/useBudget';
 import BtnGroup from '../../components/button/BtnGroup';
 import Button from '../../components/button/Button';
 import Modal from '../../components/modal/Modal';
@@ -10,8 +10,12 @@ import styles from './Budgets.module.css';
 
 export default function Budgets() {
   const { isLoading, budgets } = useGetBudgets();
+  const { status, addBudget } = useAddBudget();
+
   const formRef = useRef();
   const [isAddBudgetModalOpen, setIsAddBudgetModalOpen] = useState(false);
+
+  const isFormSubmitting = status === 'pending';
 
   if (isLoading) return <Spinner />;
 
@@ -42,10 +46,15 @@ export default function Budgets() {
         open={isAddBudgetModalOpen}
         close={() => setIsAddBudgetModalOpen(false)}
         title='Add Budget'
-        confirmLabel='Add'
+        confirmLabel={isFormSubmitting ? 'Adding...' : 'Add'}
         confirmAction={() => formRef.current.submitForm()}
+        confirmDisabled={isFormSubmitting}
       >
-        <BudgetForm ref={formRef} />
+        <BudgetForm
+          ref={formRef}
+          addBudget={addBudget}
+          closeForm={() => setIsAddBudgetModalOpen(false)}
+        />
       </Modal>
     </div>
   );

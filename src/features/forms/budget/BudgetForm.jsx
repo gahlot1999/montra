@@ -1,18 +1,32 @@
 import { forwardRef, useImperativeHandle } from 'react';
 import { useForm } from 'react-hook-form';
 import TextInput from '../../../components/input/TextInput';
+import { url } from '../../../config/url';
 import styles from './BudgetForm.module.css';
 
 const BudgetForm = forwardRef(function BudgetForm(props, ref) {
-  const { register, handleSubmit } = useForm();
+  const { addBudget, closeForm } = props;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  function addBudget(data) {
-    // Add budget logic here
+  function onAddBudget(data) {
     console.log(data);
+    // addBudget(
+    //   {
+    //     url: url.addBudget,
+    //     data,
+    //   },
+    //   {
+    //     onSuccess: closeForm,
+    //   },
+    // );
   }
 
   useImperativeHandle(ref, () => ({
-    submitForm: handleSubmit(addBudget),
+    submitForm: handleSubmit(onAddBudget),
   }));
 
   return (
@@ -22,11 +36,9 @@ const BudgetForm = forwardRef(function BudgetForm(props, ref) {
         name='budgetName'
         placeholder='Enter Budget Name'
         label='Name'
+        error={errors.name?.message}
         {...register('name', {
-          required: {
-            value: true,
-            message: 'Budget Name is required',
-          },
+          required: 'Budget Name is required',
         })}
       />
       <TextInput
@@ -35,10 +47,12 @@ const BudgetForm = forwardRef(function BudgetForm(props, ref) {
         placeholder='Enter Budget Month'
         label='Month'
         type='month'
+        error={errors.month?.message}
         {...register('month', {
-          required: {
-            value: true,
-            message: 'Budget Month is required',
+          required: 'Budget Month is required',
+          validate: (value) => {
+            const [year] = value.split('-');
+            if (year.length > 4) return 'Enter valid date';
           },
         })}
       />
@@ -48,11 +62,9 @@ const BudgetForm = forwardRef(function BudgetForm(props, ref) {
         placeholder='Enter Budget Amount'
         label='Amount'
         type='number'
+        error={errors?.amount?.message}
         {...register('amount', {
-          required: {
-            value: true,
-            message: 'Budget Amount is required',
-          },
+          required: 'Budget Amount is required',
           min: {
             value: 1,
             message: 'Budget Amount must be at least $1',
@@ -64,11 +76,9 @@ const BudgetForm = forwardRef(function BudgetForm(props, ref) {
         name='budgetDescription'
         placeholder='Enter Budget Description'
         label='Description'
+        error={errors?.description?.message}
         {...register('description', {
-          required: {
-            value: true,
-            message: 'Budget Description is required',
-          },
+          required: 'Budget Description is required',
         })}
       />
     </form>

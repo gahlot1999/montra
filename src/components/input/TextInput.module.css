@@ -56,8 +56,9 @@
 }
 
 .error {
-  color: var(--clr-danger);
+  color: hsl(var(--clr-danger-hsl), 0.8);
   font-size: 1rem;
+  font-weight: 600;
 }
 
 .errorOutline {

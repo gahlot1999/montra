@@ -1,6 +1,7 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
-import { getRequest } from '../config/apiHelper';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { getRequest, postRequest } from '../config/apiHelper';
 import { url } from '../config/url';
+import { toastError, toastSuccess } from '../utils/helpers';
 
 export function useGetBudgets() {
   const { isLoading, data } = useQuery({
@@ -12,5 +13,21 @@ export function useGetBudgets() {
 }
 
 export function useAddBudget() {
-  useMutation;
+  const client = useQueryClient();
+
+  const { mutate, status } = useMutation({
+    mutationFn: postRequest,
+    onSuccess: (data) => {
+      client.invalidateQueries(['budgets']);
+      toastSuccess(data);
+    },
+    onError: (err) => {
+      toastError(err);
+    },
+  });
+
+  return {
+    addBudget: mutate,
+    status,
+  };
 }

@@ -1,10 +1,15 @@
 import { format } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
 import { formatCurrency } from '../../utils/helpers';
-import styles from './Budgets.module.css';
+import styles from './styles/BudgetCard.module.css';
 
 export function BudgetCard({ budget }) {
+  const navigate = useNavigate();
   return (
-    <div className={styles.card}>
+    <div
+      className={styles.card}
+      onClick={() => navigate(`budget?budgetId=${budget._id}`)}
+    >
       <div className={styles.cardContent}>
         <div className={styles.budgetInfo}>
           <p>{budget.name}</p>

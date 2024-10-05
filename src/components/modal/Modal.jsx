@@ -36,7 +36,13 @@ function Modal(props) {
             </div>
             <IoIosCloseCircle size={26} onClick={close} />
           </div>
-          <div className={styles.body}>{open && children}</div>
+          <div
+            className={`${styles.body} ${
+              footerDisabled ? styles.disableBorderBottom : ''
+            }`}
+          >
+            {open && children}
+          </div>
           {!footerDisabled && (
             <div className={styles.footer}>
               <BtnGroup position='right'>

@@ -18,6 +18,12 @@
 
 svg {
   cursor: pointer;
+  vertical-align: middle;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--clr-primary);
+  }
 }
 
 ul {
@@ -34,7 +40,8 @@ button:disabled,
   cursor: not-allowed;
 }
 
-input {
+input,
+select {
   outline: none;
   border: none;
 }
@@ -83,4 +90,12 @@ h4 {
     text-decoration: underline;
     font-weight: 700;
   }
+}
+
+.deleteIcon {
+  fill: hsl(var(--clr-danger-hsl), 0.8);
+}
+
+.editIcon {
+  fill: hsl(var(--clr-primary-hsl), 0.8);
 }

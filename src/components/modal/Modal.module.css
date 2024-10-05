@@ -21,6 +21,7 @@
   transform: translate(-50%, -50%);
   background-color: var(--clr-dark-2);
   border-radius: 1rem;
+  border: 0.01px solid hsl(var(--clr-light-hsl), 0.2);
   color: var(--clr-light);
   transition: all 0.5s ease;
   color: var(--clr-light);
@@ -32,8 +33,8 @@
 
 .modal {
   & > * {
-    padding: 1.5rem;
-    border-bottom: 1px solid hsl(var(--clr-light-hsl), 0.04);
+    padding: 2rem 2.5rem;
+    border-bottom: 0.1px solid hsl(var(--clr-light-hsl), 0.2);
   }
 
   & .header {
@@ -68,7 +69,11 @@
   }
 
   & .footer {
-    padding: 1rem;
+    padding: 1.5rem 2.5rem;
     border: none !important;
   }
+}
+
+.disableBorderBottom {
+  border-bottom: none !important;
 }

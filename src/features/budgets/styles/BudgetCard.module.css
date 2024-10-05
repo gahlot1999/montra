@@ -1,11 +1,3 @@
-.container {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-/* #region BUDGET CARD */
 .cardContent {
   background-color: hsl(var(--clr-light-hsl), 0.1);
   border-radius: 2rem 0 2rem 0;
@@ -48,11 +40,11 @@
     letter-spacing: 0.1rem;
   }
 
-  & p:first-child {
+  & p:nth-child(1) {
     background-color: var(--clr-primary-dark);
   }
 
-  & p:last-child {
+  & p:nth-child(2) {
     background-color: var(--clr-danger);
   }
 }
@@ -71,5 +63,3 @@
     }
   }
 }
-
-/* #endregion BUDGET CARD */

@@ -13,16 +13,15 @@ const BudgetForm = forwardRef(function BudgetForm(props, ref) {
   } = useForm();
 
   function onAddBudget(data) {
-    console.log(data);
-    // addBudget(
-    //   {
-    //     url: url.addBudget,
-    //     data,
-    //   },
-    //   {
-    //     onSuccess: closeForm,
-    //   },
-    // );
+    addBudget(
+      {
+        url: url.addBudget,
+        data,
+      },
+      {
+        onSuccess: closeForm,
+      },
+    );
   }
 
   useImperativeHandle(ref, () => ({

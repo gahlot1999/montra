@@ -1,0 +1,53 @@
+select {
+  &:has(option[value='']:checked) {
+    color: hsl(var(--clr-light-hsl), 0.2);
+  }
+
+  & option {
+    background-color: var(--clr-dark-2);
+    color: hsla(var(--clr-light-hsl), 0.8);
+
+    &:hover {
+      box-shadow: 0 0 10px 100px #000 inset;
+    }
+  }
+}
+
+.selectContainer {
+  text-align: left;
+
+  & select {
+    width: 100%;
+    padding: 0.4rem 0.8rem;
+    margin-top: 0.1rem;
+    background-color: transparent;
+    color: hsla(var(--clr-light-hsl), 0.8);
+    border: 1px solid hsl(var(--clr-light-hsl), 0.1);
+    cursor: pointer;
+
+    &:focus {
+      border-color: var(--clr-primary);
+    }
+  }
+
+  & label {
+    font-size: 1.2rem;
+    color: hsla(var(--clr-light-hsl), 0.8);
+
+    & span {
+      color: var(--clr-danger);
+      margin-left: 0.2rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.error {
+  color: hsl(var(--clr-danger-hsl), 0.8);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.errorOutline {
+  border: 0.1px solid var(--clr-danger) !important;
+}

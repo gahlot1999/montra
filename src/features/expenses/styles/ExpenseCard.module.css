@@ -1,0 +1,46 @@
+.cardContent {
+  cursor: pointer;
+  background: linear-gradient(90deg, #212121, var(--clr-dark));
+  border-radius: 1rem;
+  padding: 1rem;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 4rem 1fr 20rem 10rem;
+  transition: all 0.3 ease;
+
+  &:hover {
+    background: linear-gradient(90deg, #111111, var(--clr-dark));
+  }
+}
+
+.checkbox {
+  height: 1.5rem;
+  margin-right: 0.8rem;
+  cursor: pointer;
+}
+
+.details {
+  & .name {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.16px;
+  }
+
+  & .category {
+    font-size: 1.4rem;
+    color: hsl(var(--clr-light-hsl), 0.5);
+    font-style: italic;
+  }
+}
+
+.amount {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.16px;
+}
+
+.actions {
+  display: flex;
+  justify-self: flex-end;
+  gap: 2rem;
+}

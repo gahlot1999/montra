@@ -3,10 +3,11 @@ import { useAddBudget, useGetBudgets } from '../../api/useBudget';
 import BtnGroup from '../../components/button/BtnGroup';
 import Button from '../../components/button/Button';
 import Modal from '../../components/modal/Modal';
+import PageTitle from '../../components/pageTitle/PageTitle';
 import Spinner from '../../components/spinner/Spinner';
 import BudgetForm from '../forms/budget/BudgetForm';
 import { BudgetCard } from './BudgetCard';
-import styles from './Budgets.module.css';
+import styles from './styles/Budgets.module.css';
 
 export default function Budgets() {
   const { isLoading, budgets } = useGetBudgets();
@@ -17,30 +18,27 @@ export default function Budgets() {
 
   const isFormSubmitting = status === 'pending';
 
-  if (isLoading) return <Spinner />;
-
   return (
     <div className={styles.container}>
-      <BtnGroup
-        gap='2rem'
-        style={{
-          position: 'absolute',
-          top: '0',
-          right: '0',
-        }}
-      >
-        <Button
-          variant='secondary'
-          onClick={() => setIsAddBudgetModalOpen(true)}
-        >
-          Add Budget
-        </Button>
-        <Button variant='secondary'>Configurations</Button>
-      </BtnGroup>
+      <PageTitle title='Montra'>
+        <BtnGroup gap='2rem'>
+          <Button
+            variant='secondary'
+            onClick={() => setIsAddBudgetModalOpen(true)}
+          >
+            Add Budget
+          </Button>
+          <Button variant='secondary'>Configurations</Button>
+        </BtnGroup>
+      </PageTitle>
 
-      {budgets?.map((budget) => (
-        <BudgetCard key={budget._id} budget={budget} />
-      ))}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        budgets?.map((budget) => (
+          <BudgetCard key={budget._id} budget={budget} />
+        ))
+      )}
 
       <Modal
         open={isAddBudgetModalOpen}

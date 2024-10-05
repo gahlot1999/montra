@@ -4,7 +4,7 @@ import styles from './TextInput.module.css';
 const TextInput = forwardRef((props, ref) => {
   const {
     theme = 'light',
-    name,
+    name = 'name',
     type = 'text',
     label = 'Provide label prop',
     placeholder,

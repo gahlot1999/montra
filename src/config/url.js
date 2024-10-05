@@ -3,6 +3,7 @@
 export const url = {
   login: '/login',
   signup: '/signup',
+  getBudgets: '/budget',
   getBudget: '/budget',
   addBudget: '/budget',
 };

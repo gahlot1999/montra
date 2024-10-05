@@ -1,8 +1,14 @@
 import axios from 'axios';
 import { constant } from './constant';
 
+function getBaseUrl() {
+  const host = window.location.hostname;
+  if (host.includes('localhost')) return constant.BASE_URL;
+  if (host.includes('montra')) return constant.BASE_URL;
+}
+
 const axiosInstance = axios.create({
-  baseURL: constant.BASE_URL,
+  baseURL: getBaseUrl(),
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',

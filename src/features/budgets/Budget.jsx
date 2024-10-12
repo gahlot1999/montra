@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useGetBudget } from '../../api/useBudget';
+import { useAddExpense } from '../../api/useExpense';
 import BtnGroup from '../../components/button/BtnGroup';
 import Button from '../../components/button/Button';
 import Message from '../../components/message/Message';
@@ -14,10 +15,12 @@ import styles from './styles/Budget.module.css';
 function Budget() {
   const [sParams] = useSearchParams();
   const budgetId = sParams.get('budgetId');
-
+  const formRef = useRef();
+  const { status, addExpense } = useAddExpense();
+  const { isLoading, budget } = useGetBudget(budgetId);
   const [expenseModal, setExpenseModal] = useState(false);
 
-  const { isLoading, budget } = useGetBudget(budgetId);
+  const isFormSubmitting = status === 'pending';
 
   if (isLoading) return <Spinner />;
 
@@ -48,11 +51,18 @@ function Budget() {
       </div>
 
       <Modal
-        open={true}
+        open={expenseModal}
         close={() => setExpenseModal(false)}
         title='Add Expense'
+        confirmLabel={isFormSubmitting ? 'Adding...' : 'Add'}
+        confirmAction={() => formRef.current.submitForm()}
+        confirmDisabled={isFormSubmitting}
       >
-        <ExpenseForm />
+        <ExpenseForm
+          ref={formRef}
+          addExpense={addExpense}
+          closeForm={() => setExpenseModal(false)}
+        />
       </Modal>
     </>
   );

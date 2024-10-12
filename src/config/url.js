@@ -6,4 +6,6 @@ export const url = {
   getBudgets: '/budget',
   getBudget: '/budget',
   addBudget: '/budget',
+  addExpense: '/budget',
+  deleteExpense: '/budget',
 };

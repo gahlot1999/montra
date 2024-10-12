@@ -1,10 +1,15 @@
 import { forwardRef, useImperativeHandle } from 'react';
 import { useForm } from 'react-hook-form';
+import { useSearchParams } from 'react-router-dom';
 import SelectInput from '../../../components/input/SelectInput';
 import TextInput from '../../../components/input/TextInput';
+import { url } from '../../../config/url';
 import styles from './ExpenseForm.module.css';
 
 const ExpenseForm = forwardRef(function ExpenseForm(props, ref) {
+  const { addExpense, closeForm } = props;
+  const [searchParam] = useSearchParams();
+
   const {
     register,
     handleSubmit,
@@ -12,7 +17,15 @@ const ExpenseForm = forwardRef(function ExpenseForm(props, ref) {
   } = useForm();
 
   function onAddExpense(data) {
-    console.log(data);
+    addExpense(
+      {
+        url: `${url.addExpense}/${searchParam.get('budgetId')}/expense`,
+        data,
+      },
+      {
+        onSuccess: closeForm,
+      },
+    );
   }
 
   useImperativeHandle(ref, () => ({
@@ -52,6 +65,9 @@ const ExpenseForm = forwardRef(function ExpenseForm(props, ref) {
           { value: 'EMI', label: 'EMI' },
           { value: 'CC Bill', label: 'CC Bill' },
         ]}
+        {...register('category', {
+          required: 'Expense Category is required',
+        })}
       />
     </form>
   );

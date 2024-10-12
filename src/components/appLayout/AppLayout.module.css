@@ -5,10 +5,9 @@
 }
 
 .app {
-  flex-grow: 1;
-  overflow-y: auto;
+  flex: 1;
+  overflow-y: scroll;
   background-color: var(--clr-dark);
   color: var(--clr-light);
-  /* max-width: 1600px; */
   padding: 2rem 2rem;
 }

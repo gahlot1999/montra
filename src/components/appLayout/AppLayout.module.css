@@ -6,7 +6,7 @@
 
 .app {
   flex: 1;
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: var(--clr-dark);
   color: var(--clr-light);
   padding: 2rem 2rem;

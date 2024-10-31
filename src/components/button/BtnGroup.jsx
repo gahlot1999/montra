@@ -1,7 +1,13 @@
 import styles from './BtnGroup.module.css';
 
 function BtnGroup(props) {
-  const { children, gap = '1rem', position = 'left', style } = props;
+  const {
+    children,
+    gap = '1rem',
+    position = 'left',
+    wrap = false,
+    style,
+  } = props;
   return (
     <div
       className={styles.btnGroup}
@@ -13,6 +19,7 @@ function BtnGroup(props) {
             ? 'flex-end'
             : 'center',
         gap,
+        flexWrap: wrap ? 'wrap' : 'nowrap',
         ...style,
       }}
     >

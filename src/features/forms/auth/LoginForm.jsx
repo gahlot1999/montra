@@ -30,7 +30,7 @@ function LoginForm() {
           autoComplete='off'
         >
           <TextInput
-            name='username'
+            theme='light'
             label='Username or Email'
             disabled={isSubmitting}
             error={errors?.username?.message}
@@ -43,7 +43,7 @@ function LoginForm() {
           />
 
           <TextInput
-            name='password'
+            theme='light'
             label='Password'
             type='password'
             disabled={isSubmitting}
@@ -61,7 +61,6 @@ function LoginForm() {
           />
 
           <Button
-            variant='primary'
             style={{
               marginBlock: '.8rem -.6rem',
             }}

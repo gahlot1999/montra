@@ -1,10 +1,12 @@
-import styles from './Landing.module.css';
-import Button from '../../components/button/Button';
-import BtnGroup from '../../components/button/BtnGroup';
+import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
+import BtnGroup from '../../components/button/BtnGroup';
+import Button from '../../components/button/Button';
+import styles from './Landing.module.css';
 
 function Landing() {
   const navigate = useNavigate();
+  const isMobile = useMediaQuery({ maxWidth: '500px' });
 
   return (
     <div className={styles.container}>
@@ -16,7 +18,7 @@ function Landing() {
           Get an overview of how you are performing and motivate yourself to
           achieve even more.
         </p>
-        <BtnGroup>
+        <BtnGroup position={isMobile ? 'center' : 'left'}>
           <Button variant='auth' onClick={() => navigate('login')}>
             Login
           </Button>

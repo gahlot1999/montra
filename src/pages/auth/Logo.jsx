@@ -1,9 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/logo.jpeg';
 import styles from './LoginSignup.module.css';
 
 function Logo() {
+  const navigate = useNavigate();
   return (
-    <div className={styles.logoContainer}>
+    <div
+      className={styles.logoContainer}
+      onClick={() => navigate('/', { replace: true })}
+    >
       <img src={logo} alt='logo' />
     </div>
   );

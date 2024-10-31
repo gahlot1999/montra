@@ -34,7 +34,7 @@ function SignupForm() {
           autoComplete='off'
         >
           <TextInput
-            name='name'
+            theme='light'
             label='Name'
             disabled={isSubmitting}
             error={errors?.name?.message}
@@ -46,7 +46,7 @@ function SignupForm() {
             })}
           />
           <TextInput
-            name='username'
+            theme='light'
             label='Username'
             disabled={isSubmitting}
             error={errors?.username?.message}
@@ -58,7 +58,7 @@ function SignupForm() {
             })}
           />
           <TextInput
-            name='email'
+            theme='light'
             label='Email'
             disabled={isSubmitting}
             error={errors?.email?.message}
@@ -74,7 +74,7 @@ function SignupForm() {
             })}
           />
           <TextInput
-            name='password'
+            theme='light'
             label='Password'
             type='password'
             disabled={isSubmitting}
@@ -91,7 +91,6 @@ function SignupForm() {
             })}
           />
           <Button
-            variant='primary'
             style={{
               marginBlock: '.8rem -.6rem',
             }}

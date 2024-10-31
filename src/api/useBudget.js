@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { getRequest, postRequest } from '../config/apiHelper';
+import { deleteRequest, getRequest, postRequest } from '../config/apiHelper';
 import { url } from '../config/url';
 import { toastError, toastSuccess } from '../utils/helpers';
 
@@ -22,9 +22,7 @@ export function useAddBudget() {
       client.invalidateQueries(['budgets']);
       toastSuccess(data);
     },
-    onError: (err) => {
-      toastError(err);
-    },
+    onError: (err) => toastError(err),
   });
 
   return {
@@ -43,4 +41,24 @@ export function useGetBudget(id) {
   });
 
   return { isLoading, budget: data?.data };
+}
+
+export function useDeleteBudget(id, navigate) {
+  const reqUrl = `${url.deleteBudget}/${id}`;
+  const client = useQueryClient();
+
+  const { mutate, status } = useMutation({
+    mutationFn: () => deleteRequest({ url: reqUrl }),
+    onSuccess: () => {
+      client.resetQueries(['budgets']);
+      toastSuccess('Budget deleted');
+      navigate(-1, { replace: true });
+    },
+    onError: (err) => toastError(err),
+  });
+
+  return {
+    deleteBudget: mutate,
+    status,
+  };
 }

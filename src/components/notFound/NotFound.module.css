@@ -1,0 +1,87 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.content {
+  width: 45vw;
+  background-color: #ffffff09;
+  padding: 3rem 4.5rem;
+  border-radius: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+
+  & h1 {
+    color: var(--clr-danger-2);
+    font-size: 12rem;
+    font-weight: 800;
+    animation: move 3s infinite ease-in-out,
+      letterSpacing 3s infinite ease-in-out;
+  }
+
+  & .title {
+    color: var(--clr-light);
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  & .message {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    color: hsla(var(--clr-light-hsl), 0.8);
+  }
+}
+
+.btnGroup {
+  display: flex;
+  gap: 2rem;
+}
+
+@keyframes move {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  12.5% {
+    transform: translateY(-1rem) rotate(-5deg) scale(1.1);
+  }
+  25% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  37.5% {
+    transform: translateY(1rem) rotate(5deg) scale(0.9);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  62.5% {
+    transform: translateY(-1rem) rotate(5deg) scale(1.1);
+  }
+  75% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  87.5% {
+    transform: translateY(1rem) rotate(-5deg) scale(0.9);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes letterSpacing {
+  0%,
+  100% {
+    letter-spacing: normal;
+  }
+  50% {
+    letter-spacing: 1.2rem;
+  }
+}

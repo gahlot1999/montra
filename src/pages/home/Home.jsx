@@ -46,8 +46,7 @@ function Header() {
   return (
     <div className={styles.header}>
       <h2>
-        Get The <span>Application</span>
-        You <br /> Want For Growth
+        Get The <span>Application</span> You <br /> Want For Growth
       </h2>
       <span>Simplify your finances and secure your future.</span>
     </div>

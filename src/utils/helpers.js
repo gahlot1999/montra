@@ -1,6 +1,11 @@
 import toast from 'react-hot-toast';
 
 export function toastError(err) {
+  if (typeof err === 'string') {
+    toast.error(err);
+    return;
+  }
+
   if (err?.response?.data?.response?.message) {
     toast.error(err.response.data.response.message);
   } else if (err?.message) {
@@ -11,6 +16,11 @@ export function toastError(err) {
 }
 
 export function toastSuccess(data) {
+  if (typeof data === 'string') {
+    toast.success(data);
+    return;
+  }
+
   if (data?.message) {
     toast.success(data.message);
   } else {

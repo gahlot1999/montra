@@ -1,6 +1,7 @@
 select {
   &:has(option[value='']:checked) {
     color: hsl(var(--clr-light-hsl), 0.2);
+    font-size: 1.4rem;
   }
 
   & option {
@@ -44,10 +45,26 @@ select {
 
 .error {
   color: hsl(var(--clr-danger-hsl), 0.8);
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .errorOutline {
-  border: 0.1px solid var(--clr-danger) !important;
+  border: 1px solid var(--clr-danger) !important;
+}
+
+@media (width < 500px) {
+  .selectContainer {
+    & select {
+      font-size: 1.6rem;
+      padding: 0.8rem 1rem;
+    }
+
+    & label {
+      font-size: 1.6rem;
+    }
+  }
+
+  .error {
+    font-size: 1.4rem;
+  }
 }

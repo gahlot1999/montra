@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaEdit } from 'react-icons/fa';
 import { RiDeleteBinFill } from 'react-icons/ri';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useDeleteExpense } from '../../api/useExpense';
 import Modal from '../../components/modal/Modal';
 import { url } from '../../config/url';
@@ -9,10 +9,12 @@ import { formatCurrency } from '../../utils/helpers';
 import styles from './styles/ExpenseCard.module.css';
 
 function ExpenseCard({ expense }) {
+  const navigate = useNavigate();
   const [searchParam] = useSearchParams();
+  const budgetId = searchParam.get('budgetId');
   const [deleteModal, setDeleteModal] = useState(false);
   const [selectedExpenseId, setSelectedExpenseId] = useState('');
-  const { status, deleteExpense } = useDeleteExpense();
+  const { status, deleteExpense } = useDeleteExpense(budgetId);
 
   const isExpenseDeleting = status === 'pending';
 
@@ -20,9 +22,7 @@ function ExpenseCard({ expense }) {
     if (!selectedExpenseId || selectedExpenseId === '') return;
     deleteExpense(
       {
-        url: `${url.deleteExpense}/${searchParam.get(
-          'budgetId',
-        )}/expense/${selectedExpenseId}`,
+        url: `${url.deleteExpense}/${budgetId}/expense/${selectedExpenseId}`,
       },
       {
         onSuccess: () => {
@@ -44,9 +44,17 @@ function ExpenseCard({ expense }) {
           </div>
           <p className={styles.amount}>{formatCurrency(expense.amount)}</p>
           <div className={styles.actions}>
-            <FaEdit size={24} className='editIcon' />
+            <FaEdit
+              size={20}
+              className='editIcon'
+              onClick={() => {
+                navigate(
+                  `editExpense?budgetId=${budgetId}&expId=${expense._id}`,
+                );
+              }}
+            />
             <RiDeleteBinFill
-              size={24}
+              size={20}
               className='deleteIcon'
               onClick={() => {
                 setSelectedExpenseId(expense._id);

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 :root {
   --clr-primary: hsl(155, 47%, 40%);
   --clr-primary-dark: hsl(155, 48%, 26%);
@@ -5,7 +7,9 @@
   --clr-light: hsl(0, 0%, 92%);
   --clr-dark: hsl(0, 0%, 1%);
   --clr-dark-2: hsl(0, 0%, 7%);
-  --clr-danger: hsl(4, 74%, 49%);
+  --clr-danger: hsl(0, 91%, 71%);
+  --clr-danger-2: hsl(4, 96%, 80%);
+  --clr-success: hsl(142, 69%, 58%);
 
   --clr-primary-hsl: 155, 47%, 40%;
   --clr-primary-dark-hsl: 155, 48%, 26%;
@@ -13,17 +17,115 @@
   --clr-light-hsl: 0, 0%, 92%;
   --clr-dark-hsl: 0, 0%, 1%;
   --clr-dark-2-hsl: 0, 0%, 7%;
-  --clr-danger-hsl: 4, 74%, 49%;
+  --clr-danger-hsl: 0, 91%, 71%;
+  --clr-danger-2-hsl: 4, 96%, 80%;
+  --clr-success-hsl: 142, 69%, 58%;
+
+  --box-shadow-card: rgb(16, 16, 16) 3px 3px 6px 0px inset,
+    rgba(22, 22, 22, 0.5) -3px -3px 6px 1px inset;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+@media (width < 500px) {
+  html {
+    font-size: 60%;
+  }
+}
+
+body {
+  line-height: 1.5;
+  min-height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.4rem;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: 'wdth' 100;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--clr-dark);
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+h2 {
+  font-size: 3.6rem;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.16px;
+}
+
+h3 {
+  color: var(--clr-dark);
+  font-size: 2.4rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+h4 {
+  color: var(--clr-light);
+  font-size: 1.8rem;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--clr-primary);
+    text-decoration: underline;
+    font-weight: 700;
+  }
+}
+
+p,
+li,
+figcaption {
+  text-wrap: pretty;
+  max-width: 65ch;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 svg {
   cursor: pointer;
   vertical-align: middle;
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: var(--clr-primary);
-  }
+  transition: all 0.3s ease;
 }
 
 ul {
@@ -58,44 +160,39 @@ input[type='number'] {
 }
 
 input[type='month'] {
+  max-height: 3.08rem;
   -webkit-appearance: none;
   appearance: none;
   color-scheme: dark;
-}
 
-h2 {
-  font-size: 3.6rem;
-  line-height: 1.1;
-  font-weight: 700;
-  letter-spacing: -0.16px;
-}
-
-h3 {
-  color: var(--clr-dark);
-  font-size: 2.4rem;
-  line-height: 1.2;
-  font-weight: 700;
-}
-
-h4 {
-  color: var(--clr-light);
-  font-size: 1.8rem;
-  line-height: 1.2;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  cursor: pointer;
-
-  &:hover {
-    color: var(--clr-primary);
-    text-decoration: underline;
-    font-weight: 700;
+  @media (width < 500px) {
+    max-height: unset;
+    min-height: 3.8rem;
+    font-size: 1.5rem;
   }
+  /* font-size: 1rem; */
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--clr-primary-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--clr-primary);
 }
 
 .deleteIcon {
-  fill: hsl(var(--clr-danger-hsl), 0.8);
+  fill: hsl(var(--clr-danger-hsl), 1);
 }
 
 .editIcon {
-  fill: hsl(var(--clr-primary-hsl), 0.8);
+  fill: hsl(var(--clr-success-hsl), 0.8);
 }

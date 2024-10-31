@@ -5,7 +5,6 @@ import { createRoot } from 'react-dom/client';
 import { Toaster } from 'react-hot-toast';
 import App from './App.jsx';
 import './style/index.css';
-import './style/reset.css';
 
 const queryClient = new QueryClient();
 

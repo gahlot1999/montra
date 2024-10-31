@@ -4,8 +4,7 @@
   border-radius: 1.6rem;
   display: flex;
   gap: 2rem;
-  box-shadow: rgb(16, 16, 16) 3px 3px 6px 0px inset,
-    rgba(22, 22, 22, 0.5) -3px -3px 6px 1px inset;
+  box-shadow: var(--box-shadow-card);
 
   &:hover {
     background-color: var(--clr-dark-2);

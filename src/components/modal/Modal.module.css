@@ -58,7 +58,7 @@
     }
 
     & svg:hover {
-      fill: var(--clr-primary);
+      fill: hsl(var(--clr-danger-hsl), 1);
     }
   }
 

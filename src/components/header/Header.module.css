@@ -12,6 +12,10 @@
   display: flex;
   align-items: center;
   gap: 5rem;
+
+  @media (width < 500px) {
+    display: none;
+  }
 }
 
 .nav ul {

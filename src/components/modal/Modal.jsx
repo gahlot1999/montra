@@ -22,6 +22,8 @@ function Modal(props) {
 
   const ref = useClickOutside(close);
 
+  if (!open) return null;
+
   return createPortal(
     <div className={`${styles.overlay} ${open ? styles.open : ''}`}>
       <div

@@ -14,7 +14,7 @@
     gap: 1rem;
   }
 
-  & svg {
+  & > svg {
     transition: all 0.3s ease;
 
     &:hover {
@@ -22,4 +22,10 @@
       scale: 1.2;
     }
   }
+}
+
+.actions {
+  margin-left: 0.5rem;
+  display: flex;
+  gap: 1.2rem;
 }

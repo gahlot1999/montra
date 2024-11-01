@@ -45,3 +45,7 @@
     color: var(--clr-light);
   }
 }
+
+.icon {
+  padding-inline: 0;
+}

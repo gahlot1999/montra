@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { FaEdit } from 'react-icons/fa';
-import { RiDeleteBinFill } from 'react-icons/ri';
+import { FiEdit } from 'react-icons/fi';
+import { MdDeleteOutline } from 'react-icons/md';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useDeleteExpense } from '../../api/useExpense';
 import Modal from '../../components/modal/Modal';
@@ -44,8 +44,8 @@ function ExpenseCard({ expense }) {
           </div>
           <p className={styles.amount}>{formatCurrency(expense.amount)}</p>
           <div className={styles.actions}>
-            <FaEdit
-              size={20}
+            <FiEdit
+              size={18}
               className='editIcon'
               onClick={() => {
                 navigate(
@@ -53,8 +53,8 @@ function ExpenseCard({ expense }) {
                 );
               }}
             />
-            <RiDeleteBinFill
-              size={20}
+            <MdDeleteOutline
+              size={21}
               className='deleteIcon'
               onClick={() => {
                 setSelectedExpenseId(expense._id);

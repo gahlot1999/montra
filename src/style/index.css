@@ -174,7 +174,7 @@ input[type='month'] {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -194,5 +194,5 @@ input[type='month'] {
 }
 
 .editIcon {
-  fill: hsl(var(--clr-success-hsl), 0.8);
+  color: hsl(var(--clr-success-hsl), 0.8);
 }

@@ -31,6 +31,7 @@
   }
 
   & .category {
+    margin-top: -2px;
     font-size: 1.4rem;
     color: hsl(var(--clr-light-hsl), 0.5);
     font-style: italic;

@@ -25,11 +25,8 @@ function Modal(props) {
   if (!open) return null;
 
   return createPortal(
-    <div className={`${styles.overlay} ${open ? styles.open : ''}`}>
-      <div
-        className={`${styles.container} ${open ? styles.open : ''}`}
-        ref={ref}
-      >
+    <div className={styles.overlay}>
+      <div className={styles.container} ref={ref}>
         <div className={styles.modal}>
           <div className={styles.header}>
             <div>

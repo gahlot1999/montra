@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { FaInfoCircle } from 'react-icons/fa';
+import { FiEdit } from 'react-icons/fi';
+import { IoMdAddCircle } from 'react-icons/io';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useDeleteBudget, useGetBudget } from '../../api/useBudget';
 import BtnGroup from '../../components/button/BtnGroup';
@@ -28,19 +31,31 @@ function Budget() {
   return (
     <>
       <div className={styles.container}>
-        <PageTitle title={budget?.name}>
+        <PageTitle
+          title={budget?.name}
+          actions={
+            <>
+              <FaInfoCircle />
+              <FiEdit
+                size={18}
+                className='editIcon'
+                // onClick={() => {
+                //   navigate(
+                //     `editExpense?budgetId=${budgetId}&expId=${expense._id}`,
+                //   );
+                // }}
+              />
+            </>
+          }
+        >
           <BtnGroup>
-            {/* <Button variant='secondary' onClick={() => setDeleteModal(true)}>
-              Delete Budget
-            </Button>
-            <Button variant='secondary'>Edit Budget</Button> */}
             <Button
-              variant='secondary'
+              variant='icon'
               onClick={() => {
                 navigate(`addExpense?budgetId=${budgetId}`);
               }}
             >
-              Add Expense
+              <IoMdAddCircle size={24} color='white' />
             </Button>
           </BtnGroup>
         </PageTitle>

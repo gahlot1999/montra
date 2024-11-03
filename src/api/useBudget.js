@@ -1,5 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { deleteRequest, getRequest, postRequest } from '../config/apiHelper';
+import {
+  deleteRequest,
+  getRequest,
+  postRequest,
+  putRequest,
+} from '../config/apiHelper';
 import { url } from '../config/url';
 import { toastError, toastSuccess } from '../utils/helpers';
 
@@ -27,7 +32,22 @@ export function useAddBudget() {
 
   return {
     addBudget: mutate,
-    status,
+    isBudgetAdding: status === 'pending',
+  };
+}
+
+export function useEditBudget() {
+  const { mutate, status } = useMutation({
+    mutationFn: putRequest,
+    onSuccess: (data) => {
+      toastSuccess(data);
+    },
+    onError: (err) => toastError(err),
+  });
+
+  return {
+    editBudget: mutate,
+    isBudgetEditing: status === 'pending',
   };
 }
 

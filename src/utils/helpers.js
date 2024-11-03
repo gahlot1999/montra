@@ -36,3 +36,14 @@ export function formatCurrency(value) {
     maximumFractionDigits: 0,
   }).format(value);
 }
+
+export function generateRandomNumber(digits) {
+  if (digits < 1) {
+    console.log('Please enter a positive number of digits.');
+    return;
+  }
+  const min = Math.pow(10, digits - 1);
+  const max = Math.pow(10, digits) - 1;
+  const randomNumber = Math.floor(min + Math.random() * (max - min + 1));
+  return randomNumber;
+}

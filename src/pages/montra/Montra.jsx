@@ -14,14 +14,14 @@ function Montra() {
       <PageTitle title='Montra' />
       <div className={styles.cardsContainer}>
         <Card
-          title='Add Budget'
-          Icon={FaMoneyCheckAlt}
-          onClick={() => navigate('addBudget')}
-        />
-        <Card
           title='Existing Budget'
           Icon={TbPigMoney}
           onClick={() => navigate('budgets')}
+        />
+        <Card
+          title='Add Budget'
+          Icon={FaMoneyCheckAlt}
+          onClick={() => navigate('addBudget')}
         />
         <Card title='Categories' Icon={GrConfigure} />
         <Card title='EMIs' Icon={TbPremiumRights} />

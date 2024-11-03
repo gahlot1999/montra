@@ -1,37 +1,82 @@
+import { format } from 'date-fns';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { useAddBudget } from '../../../api/useBudget';
+import {
+  useAddBudget,
+  useEditBudget,
+  useGetBudget,
+} from '../../../api/useBudget';
 import BtnGroup from '../../../components/button/BtnGroup';
 import Button from '../../../components/button/Button';
 import TextInput from '../../../components/input/TextInput';
+import Spinner from '../../../components/spinner/Spinner';
 import { url } from '../../../config/url';
 import styles from './BudgetForm.module.css';
 
-function BudgetForm() {
+function BudgetForm(props) {
+  const { budgetId, isAddMode, isEditMode } = props;
   const navigate = useNavigate();
-  const { status, addBudget } = useAddBudget();
+  const { isBudgetAdding, addBudget } = useAddBudget();
+  const { editBudget, isBudgetEditing } = useEditBudget(budgetId);
+  const { isLoading, budget } = useGetBudget(budgetId);
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    watch,
+    formState: { errors, isDirty },
   } = useForm();
+
+  const all = watch();
+  console.log(all);
+
+  useEffect(() => {
+    if (isEditMode && budget) {
+      reset({
+        name: budget?.name,
+        amount: budget?.amount,
+        description: budget?.description,
+        month: format(new Date(budget?.month), 'yyyy-MM'),
+      });
+    }
+  }, [isEditMode, budget, reset]);
 
   function onSubmit(data) {
     function successCallback() {
-      navigate('/montra/budgets', { replace: true });
+      navigate(
+        isAddMode
+          ? '/montra/budgets'
+          : `/montra/budgets/budget?budgetId=${budgetId}`,
+        { replace: true },
+      );
     }
-    addBudget(
-      {
-        url: url.addBudget,
-        data,
-      },
-      {
-        onSuccess: successCallback,
-      },
-    );
+
+    if (isAddMode) {
+      addBudget(
+        {
+          url: url.addBudget,
+          data,
+        },
+        {
+          onSuccess: successCallback,
+        },
+      );
+    } else if (isEditMode) {
+      editBudget(
+        {
+          url: `${url.editBudget}/${budgetId}`,
+          data,
+        },
+        {
+          onSuccess: successCallback,
+        },
+      );
+    }
   }
 
-  const formProcessing = status === 'pending';
+  const formProcessing = isBudgetAdding || isBudgetEditing;
+  if (isLoading) return <Spinner height='15rem' />;
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -94,7 +139,7 @@ function BudgetForm() {
         >
           Cancel
         </Button>
-        <Button type='submit' disabled={formProcessing}>
+        <Button type='submit' disabled={formProcessing || !isDirty}>
           {formProcessing ? 'Saving...' : 'Save'}
         </Button>
       </BtnGroup>

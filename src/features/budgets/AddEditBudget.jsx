@@ -10,7 +10,11 @@ function AddEditBudget() {
     <Container>
       <PageTitle title={isAddMode ? 'Add Budget' : 'Edit Budget'} />
       <Box>
-        <BudgetForm />
+        <BudgetForm
+          budgetId={id}
+          isAddMode={isAddMode}
+          isEditMode={isEditMode}
+        />
       </Box>
     </Container>
   );

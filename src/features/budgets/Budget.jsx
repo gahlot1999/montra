@@ -1,93 +1,82 @@
-import { useState } from 'react';
 import { FaInfoCircle } from 'react-icons/fa';
 import { FiEdit } from 'react-icons/fi';
 import { IoMdAddCircle } from 'react-icons/io';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { useDeleteBudget, useGetBudget } from '../../api/useBudget';
+import { Tooltip } from 'react-tooltip';
+import { useGetBudget } from '../../api/useBudget';
 import BtnGroup from '../../components/button/BtnGroup';
 import Button from '../../components/button/Button';
+import SummaryCard from '../../components/card/SummaryCard';
+import Container from '../../components/container/Container';
 import Message from '../../components/message/Message';
-import Modal from '../../components/modal/Modal';
 import PageTitle from '../../components/pageTitle/PageTitle';
 import Spinner from '../../components/spinner/Spinner';
 import ExpenseCard from '../expenses/ExpenseCard';
-import styles from './styles/Budget.module.css';
 
 function Budget() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const budgetId = searchParams.get('budgetId');
   const { isLoading, budget } = useGetBudget(budgetId);
-  const { deleteBudget, status: deleteStatus } = useDeleteBudget(
-    budgetId,
-    navigate,
-  );
-  const [deleteModal, setDeleteModal] = useState(false);
-
-  const isBudgetDeleting = deleteStatus === 'pending';
 
   if (isLoading) return <Spinner />;
 
   return (
-    <>
-      <div className={styles.container}>
-        <PageTitle
-          title={budget?.name}
-          actions={
-            <>
+    <Container>
+      <PageTitle
+        title={budget?.name}
+        navigateTo='/montra/budgets'
+        actions={
+          <>
+            <a className='budget-info'>
               <FaInfoCircle />
-              <FiEdit
-                size={18}
-                className='editIcon'
-                // onClick={() => {
-                //   navigate(
-                //     `editExpense?budgetId=${budgetId}&expId=${expense._id}`,
-                //   );
-                // }}
-              />
-            </>
-          }
-        >
-          <BtnGroup>
-            <Button
-              variant='icon'
+            </a>
+
+            <FiEdit
+              size={18}
+              className='editIcon'
               onClick={() => {
-                navigate(`addExpense?budgetId=${budgetId}`);
+                navigate(`/montra/editBudget?budgetId=${budgetId}`);
               }}
-            >
-              <IoMdAddCircle size={24} color='white' />
-            </Button>
-          </BtnGroup>
-        </PageTitle>
-
-        {!budget?.expense?.length ? (
-          <Message
-            title='No expenses found'
-            message='Click below to get started'
-            buttonText='Add Expense'
-            buttonAction={() => navigate(`addExpense?budgetId=${budgetId}`)}
-          />
-        ) : (
-          budget.expense.map((expense) => (
-            <ExpenseCard key={expense._id} expense={expense} />
-          ))
-        )}
-      </div>
-
-      <Modal
-        open={deleteModal}
-        close={() => {
-          setDeleteModal(false);
-        }}
-        title='Delete Budget'
-        confirmLabel={isBudgetDeleting ? 'Deleting...' : 'Delete'}
-        confirmAction={deleteBudget}
-        confirmDisabled={isBudgetDeleting}
+            />
+          </>
+        }
       >
-        Are you sure you want to delete this budget?
-      </Modal>
-    </>
+        <BtnGroup>
+          <Button
+            variant='icon'
+            onClick={() => {
+              navigate(`addExpense?budgetId=${budgetId}`);
+            }}
+          >
+            <IoMdAddCircle size={24} color='white' />
+          </Button>
+        </BtnGroup>
+      </PageTitle>
+
+      <SummaryCard
+        total={budget?.amount}
+        balance={budget?.totalSavings}
+        expense={budget?.totalExpenses}
+      />
+
+      {!budget?.expense?.length ? (
+        <Message
+          title='No expenses found'
+          message='Click below to get started'
+          buttonText='Add Expense'
+          buttonAction={() => navigate(`addExpense?budgetId=${budgetId}`)}
+        />
+      ) : (
+        budget.expense.map((expense) => (
+          <ExpenseCard key={expense._id} expense={expense} />
+        ))
+      )}
+
+      <Tooltip anchorSelect='.budget-info'>
+        <div style={{ maxWidth: '25rem' }}>{budget?.description}</div>
+      </Tooltip>
+    </Container>
   );
 }
-
 export default Budget;

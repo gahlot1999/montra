@@ -13,9 +13,7 @@ export default function Budgets() {
 
   return (
     <div className={styles.container}>
-      <PageTitle title='Budgets'
-        navigateTo='/montra'
-      >
+      <PageTitle title='Budgets' navigateTo='/montra'>
         <Button
           variant='secondary'
           onClick={() => navigate('/montra/addBudget')}

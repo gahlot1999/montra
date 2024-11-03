@@ -11,7 +11,7 @@ function Montra() {
   const navigate = useNavigate();
   return (
     <Container>
-      <PageTitle title='Montra' />
+      <PageTitle title='Montra' navigateTo='/home' />
       <div className={styles.cardsContainer}>
         <Card
           title='Existing Budget'

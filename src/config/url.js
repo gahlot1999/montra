@@ -12,4 +12,7 @@ export const url = {
   addExpense: '/budget',
   editExpense: '/budget',
   deleteExpense: '/budget',
+  getCategories: '/category',
+  addCategory: '/category',
+  deleteCategory: '/category',
 };

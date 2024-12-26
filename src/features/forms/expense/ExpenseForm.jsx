@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useGetCategories } from '../../../api/useCategory';
 import {
   useAddExpense,
   useEditExpense,
@@ -19,6 +20,7 @@ function ExpenseForm(props) {
   const [param] = useSearchParams();
   const expId = param.get('expId');
   const navigate = useNavigate();
+  const { isLoading: isCategoriesLoading, categories } = useGetCategories();
   const { status, addExpense } = useAddExpense(budgetId);
   const { status: isExpenseEditing, editExpense } = useEditExpense(budgetId);
   const { isLoading, isRefetching, expense } = useGetExpense(
@@ -76,7 +78,7 @@ function ExpenseForm(props) {
 
   const formProcessing = status === 'pending' || isExpenseEditing === 'pending';
 
-  if (isLoading || isRefetching) return <Spinner />;
+  if (isLoading || isRefetching || isCategoriesLoading) return <Spinner />;
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -112,12 +114,9 @@ function ExpenseForm(props) {
         disabled={formProcessing}
         placeholder='Select Expense Category'
         error={errors?.category?.message}
-        options={[
-          { value: 'EMI', label: 'EMI' },
-          { value: 'CC Bill', label: 'CC Bill' },
-          { value: 'Investment', label: 'Investment' },
-          { value: 'Other', label: 'Other' },
-        ]}
+        valueKey='name'
+        labelKey='name'
+        options={[...categories, { name: 'Other' }]}
         {...register('category', {
           required: 'Expense Category is required',
         })}

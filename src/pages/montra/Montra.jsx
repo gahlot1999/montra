@@ -23,7 +23,11 @@ function Montra() {
           Icon={FaMoneyCheckAlt}
           onClick={() => navigate('addBudget')}
         />
-        <Card title='Categories' Icon={GrConfigure} />
+        <Card
+          title='Categories'
+          Icon={GrConfigure}
+          onClick={() => navigate('category')}
+        />
         <Card title='EMIs' Icon={TbPremiumRights} />
       </div>
     </Container>

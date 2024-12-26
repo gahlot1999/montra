@@ -107,6 +107,14 @@ h4 {
   }
 }
 
+h5 {
+  color: var(--clr-light);
+  font-size: 1.6rem;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
 p,
 li,
 figcaption {

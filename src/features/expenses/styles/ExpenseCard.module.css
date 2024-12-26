@@ -1,4 +1,4 @@
-.cardContent {
+.expenseCard {
   cursor: pointer;
   background: linear-gradient(90deg, #212121, var(--clr-dark));
   border-radius: 1rem;
@@ -14,6 +14,18 @@
 
   &:hover {
     background: linear-gradient(90deg, #111111, var(--clr-dark));
+  }
+}
+
+.paid {
+  background: linear-gradient(90deg, var(--clr-primary-dark), var(--clr-dark));
+
+  &:hover {
+    background: linear-gradient(
+      90deg,
+      var(--clr-primary-dark),
+      var(--clr-dark)
+    );
   }
 }
 

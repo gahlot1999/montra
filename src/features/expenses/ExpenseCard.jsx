@@ -35,33 +35,34 @@ function ExpenseCard({ expense }) {
 
   return (
     <>
-      <div className={styles.expenseCard}>
-        <div className={styles.cardContent}>
-          <input type='checkbox' name='paid' className={styles.checkbox} />
-          <div className={styles.details}>
-            <p className={styles.name}>{expense.name}</p>
-            <p className={styles.category}>{expense.category}</p>
-          </div>
-          <p className={styles.amount}>{formatCurrency(expense.amount)}</p>
-          <div className={styles.actions}>
-            <FiEdit
-              size={18}
-              className='editIcon'
-              onClick={() => {
-                navigate(
-                  `editExpense?budgetId=${budgetId}&expId=${expense._id}`,
-                );
-              }}
-            />
-            <MdDeleteOutline
-              size={21}
-              className='deleteIcon'
-              onClick={() => {
-                setSelectedExpenseId(expense._id);
-                setDeleteModal(true);
-              }}
-            />
-          </div>
+      <div className={`${styles.expenseCard} ${expense.paid && styles.paid}`}>
+        <input
+          type='checkbox'
+          name='paid'
+          className={styles.checkbox}
+          checked={expense.paid}
+        />
+        <div className={styles.details}>
+          <p className={styles.name}>{expense.name}</p>
+          <p className={styles.category}>{expense.category}</p>
+        </div>
+        <p className={styles.amount}>{formatCurrency(expense.amount)}</p>
+        <div className={styles.actions}>
+          <FiEdit
+            size={18}
+            className='editIcon'
+            onClick={() => {
+              navigate(`editExpense?budgetId=${budgetId}&expId=${expense._id}`);
+            }}
+          />
+          <MdDeleteOutline
+            size={21}
+            className='deleteIcon'
+            onClick={() => {
+              setSelectedExpenseId(expense._id);
+              setDeleteModal(true);
+            }}
+          />
         </div>
       </div>
 

@@ -15,4 +15,8 @@ export const url = {
   getCategories: '/category',
   addCategory: '/category',
   deleteCategory: '/category',
+  getEmis: '/emi',
+  addEmi: '/emi',
+  deleteEmi: '/emi',
+  editEmi: '/emi',
 };

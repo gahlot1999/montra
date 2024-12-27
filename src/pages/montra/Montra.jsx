@@ -28,7 +28,11 @@ function Montra() {
           Icon={GrConfigure}
           onClick={() => navigate('category')}
         />
-        <Card title='EMIs' Icon={TbPremiumRights} />
+        <Card
+          title='EMIs'
+          Icon={TbPremiumRights}
+          onClick={() => navigate('emi')}
+        />
       </div>
     </Container>
   );

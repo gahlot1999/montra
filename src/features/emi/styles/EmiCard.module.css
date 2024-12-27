@@ -1,0 +1,54 @@
+.emiCard {
+  cursor: pointer;
+  background: linear-gradient(90deg, var(--clr-dark-2), var(--clr-dark));
+  border-radius: 1rem;
+  padding: 1rem;
+  display: grid;
+  align-items: center;
+  grid-template-columns: minmax(12rem, 1fr) 8rem 8rem;
+  transition: all 0.3 ease;
+
+  @media (width > 500px) {
+    grid-template-columns: 1fr 14rem 8rem;
+  }
+}
+
+.active {
+  background: linear-gradient(90deg, var(--clr-secondary), var(--clr-dark));
+}
+
+.details {
+  & .name {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.16px;
+  }
+
+  & .description {
+    margin-top: -2px;
+    font-size: 1.4rem;
+    color: hsl(var(--clr-light-hsl), 0.5);
+    font-style: italic;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-self: flex-end;
+  gap: 1.4rem;
+}
+
+.emiMetaData {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & p {
+    font-size: 1.2rem;
+    font-weight: 100;
+
+    & span {
+      font-weight: 600;
+    }
+  }
+}

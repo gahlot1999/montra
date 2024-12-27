@@ -8,16 +8,27 @@ import {
 import { url } from '../config/url';
 import { toastError, toastSuccess } from '../utils/helpers';
 
-export function useAddExpense(budgetId) {
+export function useGetEmis() {
+  const reqUrl = `${url.getEmis}?sort=-endMonth`;
+
+  const { isLoading, data } = useQuery({
+    queryKey: ['emis'],
+    queryFn: () => getRequest({ url: reqUrl }),
+  });
+
+  return { isLoading, emis: data?.data };
+}
+
+export function useAddEmi() {
   const client = useQueryClient();
 
   const { mutate, status } = useMutation({
     mutationFn: postRequest,
-    onSuccess: (data) => {
-      client.resetQueries({
-        queryKey: ['budget', budgetId],
+    onSuccess: () => {
+      client.invalidateQueries({
+        queryKey: ['emis'],
       });
-      toastSuccess(data);
+      toastSuccess('EMI added successfully');
     },
     onError: (err) => {
       toastError(err);
@@ -25,43 +36,41 @@ export function useAddExpense(budgetId) {
   });
 
   return {
-    addExpense: mutate,
-    status,
+    addEmi: mutate,
+    isEmiAdding: status === 'pending',
   };
 }
 
-export function useEditExpense(budgetId) {
+export function useEditEmi() {
   const client = useQueryClient();
-
   const { mutate, status } = useMutation({
     mutationFn: putRequest,
-    onSuccess: (data) => {
+    onSuccess: () => {
       client.invalidateQueries({
-        queryKey: ['budget', budgetId],
+        queryKey: ['emis'],
       });
-      toastSuccess(data);
+      toastSuccess('EMI updated successfully');
     },
     onError: (err) => {
       toastError(err);
     },
   });
-
   return {
-    editExpense: mutate,
-    status,
+    editEmi: mutate,
+    isEmiEditing: status === 'pending',
   };
 }
 
-export function useDeleteExpense(budgetId) {
+export function useDeleteEmi() {
   const client = useQueryClient();
 
   const { mutate, status } = useMutation({
     mutationFn: deleteRequest,
     onSuccess: () => {
-      client.resetQueries({
-        queryKey: ['budget', budgetId],
+      client.invalidateQueries({
+        queryKey: ['emis'],
       });
-      toastSuccess('Expense deleted successfully');
+      toastSuccess('EMI deleted successfully');
     },
     onError: (err) => {
       toastError(err);
@@ -69,19 +78,7 @@ export function useDeleteExpense(budgetId) {
   });
 
   return {
-    deleteExpense: mutate,
-    status,
+    deleteEmi: mutate,
+    isEmiDeleting: status === 'pending',
   };
-}
-
-export function useGetExpense(expId, budgetId, isEditMode) {
-  const reqUrl = `${url.getExpense}/${budgetId}/expense/${expId}`;
-
-  const { isLoading, isRefetching, data } = useQuery({
-    queryKey: ['expense', expId],
-    queryFn: () => getRequest({ url: reqUrl }),
-    enabled: isEditMode,
-  });
-
-  return { isLoading, isRefetching, expense: data?.data };
 }

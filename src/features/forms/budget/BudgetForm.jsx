@@ -24,12 +24,8 @@ function BudgetForm(props) {
     register,
     handleSubmit,
     reset,
-    watch,
     formState: { errors, isDirty },
   } = useForm();
-
-  const all = watch();
-  console.log(all);
 
   useEffect(() => {
     if (isEditMode && budget) {

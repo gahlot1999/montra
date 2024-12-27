@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { FaInfoCircle } from 'react-icons/fa';
 import { FiEdit } from 'react-icons/fi';
 import { IoMdAddCircle } from 'react-icons/io';
@@ -19,12 +20,17 @@ function Budget() {
   const budgetId = searchParams.get('budgetId');
   const { isLoading, budget } = useGetBudget(budgetId);
 
+  console.log(budget);
+
   if (isLoading) return <Spinner />;
 
   return (
     <Container>
       <PageTitle
-        title={budget?.name}
+        title={`${budget?.name} (${format(
+          new Date(budget?.month),
+          'MMM - yy',
+        )})`}
         navigateTo='/montra/budgets'
         actions={
           <>

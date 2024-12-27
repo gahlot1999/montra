@@ -17,6 +17,18 @@
   }
 }
 
+.emi {
+  background: linear-gradient(90deg, var(--clr-secondary), var(--clr-dark));
+
+  &:hover {
+    background: linear-gradient(
+      90deg,
+      var(--clr-secondary),
+      var(--clr-dark)
+    );
+  }
+}
+
 .paid {
   background: linear-gradient(90deg, var(--clr-primary-dark), var(--clr-dark));
 
@@ -60,4 +72,19 @@
   display: flex;
   justify-self: flex-end;
   gap: 1.4rem;
+}
+
+.emiMetaData {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & p {
+    font-size: 1.2rem;
+    font-weight: 100;
+
+    & span {
+      font-weight: 600;
+    }
+  }
 }

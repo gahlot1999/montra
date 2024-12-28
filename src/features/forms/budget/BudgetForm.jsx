@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import {
   useAddBudget,
@@ -17,6 +18,7 @@ import styles from './BudgetForm.module.css';
 function BudgetForm(props) {
   const { budgetId, isAddMode, isEditMode } = props;
   const navigate = useNavigate();
+  const [addEmi, setAddEmi] = useState(isEditMode ? false : true);
   const { isBudgetAdding, addBudget } = useAddBudget();
   const { editBudget, isBudgetEditing } = useEditBudget(budgetId);
   const { isLoading, budget } = useGetBudget(budgetId);
@@ -51,7 +53,7 @@ function BudgetForm(props) {
     if (isAddMode) {
       addBudget(
         {
-          url: url.addBudget,
+          url: `${url.addBudget}?addEmi=${addEmi}`,
           data,
         },
         {
@@ -61,7 +63,7 @@ function BudgetForm(props) {
     } else if (isEditMode) {
       editBudget(
         {
-          url: `${url.editBudget}/${budgetId}`,
+          url: `${url.editBudget}/${budgetId}?addEmi=${addEmi}`,
           data,
         },
         {
@@ -85,6 +87,7 @@ function BudgetForm(props) {
           required: 'Budget Name is required',
         })}
       />
+
       <TextInput
         placeholder='Enter Budget Month'
         label='Month'
@@ -99,6 +102,7 @@ function BudgetForm(props) {
           },
         })}
       />
+
       <TextInput
         placeholder='Enter Budget Amount'
         label='Amount'
@@ -114,6 +118,7 @@ function BudgetForm(props) {
           },
         })}
       />
+
       <TextInput
         placeholder='Enter Budget Description'
         label='Description'
@@ -125,6 +130,28 @@ function BudgetForm(props) {
       />
 
       <BtnGroup position='right'>
+        <div className={styles.addEMI}>
+          <input
+            type='checkbox'
+            name='emi'
+            id='emi'
+            checked={addEmi}
+            onChange={(e) => {
+              if (isEditMode && e.target.checked) {
+                toast.success(
+                  'This will delete existing EMIs and add eligible EMIs again.',
+                  {
+                    icon: 'ℹ️',
+                    duration: 5000,
+                  },
+                );
+              }
+              setAddEmi(e.target.checked);
+            }}
+          />
+          <label htmlFor='emi'>Add EMI?</label>
+        </div>
+
         <Button
           variant='secondary'
           disabled={formProcessing}
@@ -135,7 +162,11 @@ function BudgetForm(props) {
         >
           Cancel
         </Button>
-        <Button type='submit' disabled={formProcessing || !isDirty}>
+
+        <Button
+          type='submit'
+          disabled={formProcessing || (isEditMode && !addEmi && !isDirty)}
+        >
           {formProcessing ? 'Saving...' : 'Save'}
         </Button>
       </BtnGroup>

@@ -22,3 +22,17 @@
     }
   }
 }
+
+.addEMI {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  & > label {
+    cursor: pointer;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-right: 1rem;
+  }
+}

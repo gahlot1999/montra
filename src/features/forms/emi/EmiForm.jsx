@@ -127,7 +127,14 @@ function EmiForm() {
           />
 
           <BtnGroup>
-            <Button variant='secondary' disabled={isFormProcessing}>
+            <Button
+              variant='secondary'
+              disabled={isFormProcessing}
+              onClick={(e) => {
+                e.preventDefault();
+                navigate(-1, { replace: true });
+              }}
+            >
               Cancel
             </Button>
             <Button disabled={isFormProcessing || !isDirty}>

@@ -26,7 +26,7 @@ function Emi() {
           title='No EMI found'
           message='Click below to get started'
           buttonText='Add EMI'
-          buttonAction={() => navigate('/montra/addEmi', { replace: true })}
+          buttonAction={() => navigate('/montra/emi/addEmi')}
         />
       ) : (
         emis.map((emi) => <EmiCard key={emi._id} emi={emi} />)

@@ -47,3 +47,8 @@ export function generateRandomNumber(digits) {
   const randomNumber = Math.floor(min + Math.random() * (max - min + 1));
   return randomNumber;
 }
+
+export function currentMonthYear() {
+  const today = new Date();
+  return new Date(Date.UTC(today.getFullYear(), today.getMonth(), 1));
+}

@@ -10,6 +10,8 @@
   --clr-danger: hsl(0, 91%, 71%);
   --clr-danger-2: hsl(4, 96%, 80%);
   --clr-success: hsl(142, 69%, 58%);
+  --clr-gray-1: hsl(0, 0%, 40%);
+  --clr-gray-2: hsl(0, 0%, 60%);
 
   --clr-primary-hsl: 155, 47%, 40%;
   --clr-primary-dark-hsl: 155, 48%, 26%;
@@ -20,6 +22,7 @@
   --clr-danger-hsl: 0, 91%, 71%;
   --clr-danger-2-hsl: 4, 96%, 80%;
   --clr-success-hsl: 142, 69%, 58%;
+  --clr-gray-1-hsl: 0, 0%, 40%;
 
   --box-shadow-card: rgb(16, 16, 16) 3px 3px 6px 0px inset,
     rgba(22, 22, 22, 0.5) -3px -3px 6px 1px inset;

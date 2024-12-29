@@ -17,15 +17,12 @@ function Header() {
             <li>
               <NavLink to='/montra'>Montra</NavLink>
             </li>
-            <li>
-              <NavLink to='/signup'>Signup</NavLink>
-            </li>
-            <li>
-              <NavLink to='/login'>Login</NavLink>
-            </li>
           </ul>
         </nav>
-        <FaCircleUser size={20} />
+        <FaCircleUser
+          size={20}
+          onClick={() => navigate('/login', { replace: true })}
+        />
       </div>
     </header>
   );

@@ -38,7 +38,7 @@ function EmiForm() {
         description: emi?.description,
         amount: emi?.amount,
         startMonth: format(new Date(emi?.startMonth), 'yyy-MM'),
-        endMonth: format(new Date(emi?.endMonth), 'YYY-MM'),
+        endMonth: format(new Date(emi?.endMonth), 'yyy-MM'),
       });
     }
   }, [emi, isEditMode, reset]);

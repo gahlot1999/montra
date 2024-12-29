@@ -1,0 +1,127 @@
+.container {
+  color: var(--clr-dark);
+  background-color: var(--clr-light);
+  padding: 1.4rem 2rem;
+  width: 45rem;
+  border-radius: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.emiInfoContainer {
+  display: flex;
+  gap: 5rem;
+  justify-content: space-between;
+  margin-bottom: 2.6rem;
+
+  & .emiDuration {
+    font-family: monospace;
+    font-weight: 600;
+    word-spacing: -3px;
+    color: var(--clr-gray-1);
+  }
+
+  & .emiNameAmount {
+    font-size: 1.7rem;
+    margin-top: -0.5rem;
+    font-weight: 600;
+
+    & > span {
+      font-family: monospace;
+    }
+  }
+
+  & .emiStatus {
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: var(--clr-danger);
+    border-radius: 999rem;
+    position: relative;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      right: 60%;
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+      background-color: var(--clr-danger);
+    }
+  }
+}
+
+.active {
+  background-color: var(--clr-primary) !important;
+
+  &::before {
+    background-color: var(--clr-primary) !important;
+  }
+}
+
+.emiAmountContainer {
+  display: grid;
+  gap: 1rem;
+
+  & .tagsContainer {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  & .tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    color: var(--clr-dark);
+  }
+
+  & .tag {
+    font-size: 1.3rem;
+    border-radius: 999rem;
+    padding: 0.5rem 1.6rem;
+
+    & > span {
+      font-weight: 600;
+      font-family: monospace;
+    }
+  }
+
+  & .primaryTag {
+    min-width: 8.5rem;
+    text-align: center;
+    color: var(--clr-light);
+    background-color: var(--clr-dark-2);
+  }
+
+  & .secondaryTag {
+    border: 1px solid var(--clr-dark-2);
+  }
+}
+
+.progressBar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  height: 0.4rem;
+  width: 100%;
+  background-color: var(--clr-gray-2);
+}
+
+.progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  height: 0.4rem;
+  background-color: var(--clr-primary);
+}
+
+@media (width < 500px) {
+  .container {
+    width: 100%;
+  }
+}

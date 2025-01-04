@@ -1,7 +1,6 @@
-import { forwardRef } from 'react';
 import styles from './SelectInput.module.css';
 
-const SelectInput = forwardRef((props, ref) => {
+function SelectInput(props) {
   const {
     name = 'name',
     label = 'Provide label prop',
@@ -30,7 +29,6 @@ const SelectInput = forwardRef((props, ref) => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         disabled={disabled}
-        ref={ref}
         {...rest}
       >
         <option value='' selected hidden>
@@ -45,7 +43,6 @@ const SelectInput = forwardRef((props, ref) => {
       {error && <p className={styles.error}>{error}</p>}
     </div>
   );
-});
+}
 
-SelectInput.displayName = 'SelectInput';
 export default SelectInput;

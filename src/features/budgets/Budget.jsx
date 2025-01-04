@@ -27,10 +27,7 @@ function Budget() {
   return (
     <Container>
       <PageTitle
-        title={`${budget?.name} (${format(
-          new Date(budget?.month),
-          'MMM - yy',
-        )})`}
+        title={`${format(new Date(budget?.month), 'MMM - yy')}`}
         navigateTo='/montra/budgets'
         actions={
           <>

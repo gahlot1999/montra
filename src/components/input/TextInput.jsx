@@ -1,7 +1,6 @@
-import { forwardRef } from 'react';
 import styles from './TextInput.module.css';
 
-const TextInput = forwardRef((props, ref) => {
+function TextInput(props) {
   const {
     theme = 'dark',
     name = 'name',
@@ -34,13 +33,11 @@ const TextInput = forwardRef((props, ref) => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         disabled={disabled}
-        ref={ref}
         {...rest}
       />
       {error && <p className={styles.error}>{error}</p>}
     </div>
   );
-});
+}
 
-TextInput.displayName = 'TextInput';
 export default TextInput;

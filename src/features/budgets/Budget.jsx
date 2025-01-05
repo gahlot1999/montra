@@ -20,8 +20,6 @@ function Budget() {
   const budgetId = searchParams.get('budgetId');
   const { isLoading, budget } = useGetBudget(budgetId);
 
-  console.log(budget);
-
   if (isLoading) return <Spinner />;
 
   return (
@@ -77,7 +75,7 @@ function Budget() {
       )}
 
       <Tooltip anchorSelect='.budget-info'>
-        <div style={{ maxWidth: '25rem' }}>{budget?.description}</div>
+        <div style={{ maxWidth: '30rem' }}>{budget?.description}</div>
       </Tooltip>
     </Container>
   );

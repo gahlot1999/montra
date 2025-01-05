@@ -39,7 +39,6 @@ export function formatCurrency(value) {
 
 export function generateRandomNumber(digits) {
   if (digits < 1) {
-    console.log('Please enter a positive number of digits.');
     return;
   }
   const min = Math.pow(10, digits - 1);

@@ -18,6 +18,7 @@ function Modal(props) {
     cancelAction = close,
     confirmDisabled = false,
     footerDisabled = false,
+    size = 'lg',
   } = props;
 
   const ref = useClickOutside(close);
@@ -26,7 +27,7 @@ function Modal(props) {
 
   return createPortal(
     <div className={styles.overlay}>
-      <div className={styles.container} ref={ref}>
+      <div className={`${styles.container} ${styles[size]}`} ref={ref}>
         <div className={styles.modal}>
           <div className={styles.header}>
             <div>

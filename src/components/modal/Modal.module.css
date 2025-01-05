@@ -21,8 +21,28 @@
   transition: all 0.5s ease;
   color: var(--clr-light);
 
-  @media (width < 500px) {
+  &.sm {
+    width: 30%;
+  }
+
+  &.md {
+    width: 45%;
+  }
+
+  &.lg {
+    width: 60%;
+  }
+
+  &.xl {
+    width: 80%;
+  }
+
+  &.full {
     width: 100%;
+  }
+
+  @media (width < 500px) {
+    width: 100% !important;
   }
 }
 

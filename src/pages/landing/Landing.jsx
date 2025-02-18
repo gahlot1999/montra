@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import BtnGroup from '../../components/button/BtnGroup';
 import Button from '../../components/button/Button';
 import styles from './Landing.module.css';
@@ -7,6 +8,15 @@ import styles from './Landing.module.css';
 function Landing() {
   const navigate = useNavigate();
   const isMobile = useMediaQuery({ maxWidth: '500px' });
+
+  const [isAuthenticated] = useState(() => {
+    const value = localStorage.getItem('isAuthenticated');
+    return value === 'true';
+  });
+
+  if (isAuthenticated) {
+    return <Navigate to='/home' />;
+  }
 
   return (
     <div className={styles.container}>

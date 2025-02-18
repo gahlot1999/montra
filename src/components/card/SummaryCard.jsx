@@ -14,7 +14,14 @@ function SummaryCard(props) {
       </div>
       <p className={styles.number}>**** **** **** {generateRandomNumber(4)}</p>
       <p className={styles.balance}>
-        Balance<span>{formatCurrency(balance)}</span>
+        Balance
+        <span
+          style={{
+            color: balance < 0 ? 'var(--clr-danger)' : '(--clr-success)',
+          }}
+        >
+          {formatCurrency(balance)}
+        </span>
       </p>
       <p className={styles.expense}>
         Expense<span>{formatCurrency(expense)}</span>

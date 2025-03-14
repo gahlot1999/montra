@@ -36,7 +36,8 @@ axiosInstance.interceptors.response.use(
   function (error) {
     if (error.response && error.response.status === 401) {
       localStorage.removeItem('token');
-      // Redirect to login page or handle unauthorized access
+      localStorage.setItem('isAuthenticated', false);
+      window.location = '/login';
     }
     throw error;
   },

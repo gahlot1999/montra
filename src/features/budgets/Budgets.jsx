@@ -19,8 +19,6 @@ export default function Budgets() {
   const { isLoading, budgets } = useGetBudgets();
   const [budgetsChartModel, setBudgetsChartModel] = useState(false);
 
-  console.log('budgets', budgets);
-
   return (
     <>
       <Container>

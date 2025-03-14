@@ -1,14 +1,31 @@
-import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
+import { useValidateToken } from '../api/useAuth';
 import AppLayout from '../components/appLayout/AppLayout';
+import Spinner from '../components/spinner/Spinner';
 
 function ProtectedRoute() {
-  const [isAuthenticated] = useState(() => {
-    const value = localStorage.getItem('isAuthenticated');
-    return value === 'true';
-  });
+  const { key } = useLocation();
+  const { isLoading } = useValidateToken();
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    localStorage.getItem('isAuthenticated'),
+  );
 
-  return <>{isAuthenticated ? <AppLayout /> : <Navigate to='/login' />}</>;
+  useEffect(() => {
+    setIsAuthenticated(localStorage.getItem('isAuthenticated') === 'true');
+  }, [key]);
+
+  return (
+    <>
+      {isLoading ? (
+        <Spinner height='40rem' />
+      ) : isAuthenticated ? (
+        <AppLayout />
+      ) : (
+        <Navigate to='/login' />
+      )}
+    </>
+  );
 }
 
 export default ProtectedRoute;

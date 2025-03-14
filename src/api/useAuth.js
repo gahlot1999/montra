@@ -1,6 +1,7 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import { postRequest } from '../config/apiHelper';
+import { getRequest, postRequest } from '../config/apiHelper';
+import { url } from '../config/url';
 import { toastError, toastSuccess } from '../utils/helpers';
 
 export function useSignup() {
@@ -52,4 +53,23 @@ export function useLogin() {
     login: mutate,
     status,
   };
+}
+
+export function useValidateToken() {
+  const reqUrl = url.validateToken;
+
+  const { isLoading, data } = useQuery({
+    queryKey: ['validateToken'],
+    queryFn: () => getRequest({ url: reqUrl }),
+    enabled: Boolean(
+      localStorage.getItem('token') &&
+        localStorage.getItem('isAuthenticated') === 'true',
+    ),
+    onSuccess: () => {
+      localStorage.setItem('isAuthenticated', true);
+      window.location = '/home';
+    },
+  });
+
+  return { isLoading, message: data?.message };
 }

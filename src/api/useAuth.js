@@ -65,10 +65,6 @@ export function useValidateToken() {
       localStorage.getItem('token') &&
         localStorage.getItem('isAuthenticated') === 'true',
     ),
-    onSuccess: () => {
-      localStorage.setItem('isAuthenticated', true);
-      window.location = '/home';
-    },
   });
 
   return { isLoading, message: data?.message };

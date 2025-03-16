@@ -4,8 +4,9 @@ import { constant } from './constant';
 function getBaseUrl() {
   const host = window.location.hostname;
   if (host.includes('localhost')) return constant.BASE_URL_LOCAL;
-  if (host.includes('montra')) return constant.BASE_URL;
   if (host.includes('192.168')) return constant.BASE_URL;
+
+  return constant.BASE_URL;
 }
 
 const axiosInstance = axios.create({
